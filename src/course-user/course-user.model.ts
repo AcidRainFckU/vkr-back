@@ -34,7 +34,9 @@ export class UserCourse extends Model<UserCourse> {
 	userId: number
 
 	@Column({
-		type: DataType.INTEGER
+		type: DataType.INTEGER,
+		allowNull: false,
+		defaultValue: 0
 	})
 	progress: number
 }

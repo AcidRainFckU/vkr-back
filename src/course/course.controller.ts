@@ -28,7 +28,7 @@ export class CourseController {
 		}
 	}
 
-	@Role()
+	@Role('superuser')
 	@Post('/add-user')
 	addUser(@Body() dto: AddUserDto) {
 		try {
@@ -38,7 +38,7 @@ export class CourseController {
 		}
 	}
 
-	@Role()
+	@Role('superuser')
 	@Post('/delete')
 	dropCourse(@Body() dto: AddUserDto) {
 		try {

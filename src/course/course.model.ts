@@ -11,7 +11,7 @@ import { Language } from 'src/language/language.model'
 import { Lesson } from 'src/lesson/lesson.model'
 import { User } from 'src/user/user.model'
 import { CourseLanguage } from './course-language.model'
-import { UserCourse } from './course-user.model'
+import { UserCourse } from '../course-user/course-user.model'
 
 interface CoursesCreationAttrs {
 	title: string

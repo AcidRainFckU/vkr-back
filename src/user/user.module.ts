@@ -7,7 +7,7 @@ import { User } from './user.model'
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { AuthModule } from 'src/auth/auth.module'
 import { Course } from 'src/course/course.model'
-import { UserCourse } from 'src/course/course-user.model'
+import { UserCourse } from 'src/course-user/course-user.model'
 import { Homework } from 'src/homework/homeworks.model'
 import { CourseModule } from 'src/course/course.module'
 

@@ -14,13 +14,14 @@ import { ChapterModule } from './chapter/chapter.module'
 import { LessonModule } from './lesson/lesson.module'
 import { HomeworkModule } from './homework/homework.module'
 import { LanguageModule } from './language/language.module'
-import { UserCourse } from './course/course-user.model'
+import { UserCourse } from './course-user/course-user.model'
 import { Language } from './language/language.model'
 import { CourseLanguage } from './course/course-language.model'
 import { Course } from './course/course.model'
 import { Homework } from './homework/homeworks.model'
 import { Lesson } from './lesson/lesson.model'
 import { Chapter } from './chapter/chapter.model'
+import { CourseUserModule } from './course-user/course-user.module'
 
 @Module({
 	imports: [
@@ -64,7 +65,9 @@ import { Chapter } from './chapter/chapter.model'
 
 		HomeworkModule,
 
-		LanguageModule
+		LanguageModule,
+
+		CourseUserModule
 	],
 	controllers: [],
 	providers: []

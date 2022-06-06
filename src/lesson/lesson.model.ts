@@ -17,6 +17,7 @@ interface LessonCreationAttrs {
 	text: Text
 	courseId: number
 	chaptereId: number
+	homework: boolean
 }
 
 @Table({ tableName: 'lessons' })

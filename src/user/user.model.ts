@@ -6,7 +6,7 @@ import {
 	Model,
 	Table
 } from 'sequelize-typescript'
-import { UserCourse } from 'src/course/course-user.model'
+import { UserCourse } from 'src/course-user/course-user.model'
 import { Course } from 'src/course/course.model'
 import { Homework } from 'src/homework/homeworks.model'
 
