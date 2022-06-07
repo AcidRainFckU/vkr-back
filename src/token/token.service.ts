@@ -10,6 +10,7 @@ export class TokenService {
 	constructor(@InjectModel(Token) private tokenRepasitory: typeof Token) {}
 
 	async create(dto: CreateUserTokenDto) {
+		console.log('флюовырфдловфыдвлофдлв орвофыолвфыов ф ыловфырвлдфоврдф ыв о')
 		const userToken = await this.tokenRepasitory.create(dto)
 		return userToken
 	}

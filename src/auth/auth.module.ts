@@ -10,7 +10,6 @@ import { TokenModule } from 'src/token/token.module'
 	providers: [AuthService],
 	imports: [
 		forwardRef(() => UserModule),
-
 		JwtModule.register({
 			secret: process.env.PRIVATE_ACCESS_KEY || 'SECRET',
 			signOptions: {

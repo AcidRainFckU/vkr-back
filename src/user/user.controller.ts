@@ -1,5 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { Role } from 'src/auth/roles-auth.decorator'
+import { RoleGuard } from 'src/auth/roles.guard'
 import { BanUserDto } from './dto/ban-user.dto'
 import { ChangeUserSettingsDto } from './dto/change-user-settings.dto'
 import { GetUserDto } from './dto/get-user.dto'
@@ -12,6 +14,7 @@ export class UserController {
 	constructor(private userService: UserService) {}
 
 	@Role('superuser')
+	@UseGuards(RoleGuard)
 	@Post()
 	getAll(@Body() dto: GetUserDto) {
 		try {
@@ -21,7 +24,8 @@ export class UserController {
 		}
 	}
 
-	@Role('superuser', 'user', 'mentor')
+	@Role('superuser', 'mentor', 'student')
+	@UseGuards(RoleGuard)
 	@Post('/settings')
 	changeSettings(@Body() dto: ChangeUserSettingsDto) {
 		try {
@@ -32,6 +36,7 @@ export class UserController {
 	}
 
 	@Role('superuser')
+	@UseGuards(RoleGuard)
 	@Post('/ban')
 	banUser(@Body() dto: BanUserDto) {
 		try {
@@ -42,6 +47,7 @@ export class UserController {
 	}
 
 	@Role('superuser')
+	@UseGuards(RoleGuard)
 	@Post('/role')
 	setRole(@Body() dto: SetRoleDto) {
 		try {

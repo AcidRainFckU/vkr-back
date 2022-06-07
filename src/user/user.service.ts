@@ -28,7 +28,7 @@ export class UserService {
 
 	// ПОИСК ПОЛЬЗОВАТЕЛЕЙ
 	async getAllUsers(dto: GetUserDto) {
-		const users = (await this.userRepository.findAll({
+		const users = await this.userRepository.findAll({
 			where: {
 				email: {
 					[Op.startsWith]: dto.email
@@ -45,8 +45,11 @@ export class UserService {
 						: dto.status === 1
 						? false
 						: true
+			},
+			include: {
+				all: true
 			}
-		})) as GetUsers[]
+		})
 		return users
 	}
 

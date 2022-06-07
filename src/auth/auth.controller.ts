@@ -3,7 +3,8 @@ import { ValidTokenTokenDto } from 'src/token/dto/verifyToken.dto'
 import { CreateUserDto } from 'src/user/dto/create-user.dto'
 import { LoginUserDto } from 'src/user/dto/login-user.dto'
 import { AuthService } from './auth.service'
-import { JwtAuthGuard } from './jwt-auth.guard'
+import { Role } from './roles-auth.decorator'
+import { RoleGuard } from './roles.guard'
 
 @Controller()
 export class AuthController {
@@ -27,7 +28,8 @@ export class AuthController {
 		}
 	}
 
-	@UseGuards(JwtAuthGuard)
+	@Role('superuser', 'mentor', 'student')
+	@UseGuards(RoleGuard)
 	@Post('/verify')
 	async verify(@Body() dto: ValidTokenTokenDto) {
 		try {

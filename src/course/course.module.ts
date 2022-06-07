@@ -11,6 +11,7 @@ import { Language } from 'src/language/language.model'
 import { LanguageModule } from 'src/language/language.module'
 import { UserService } from 'src/user/user.service'
 import { UserModule } from 'src/user/user.module'
+import { AuthModule } from 'src/auth/auth.module'
 
 @Module({
 	controllers: [CourseController],
@@ -18,6 +19,7 @@ import { UserModule } from 'src/user/user.module'
 	imports: [
 		LanguageModule,
 		UserModule,
+		AuthModule,
 		SequelizeModule.forFeature([
 			User,
 			Chapter,

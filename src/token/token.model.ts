@@ -25,8 +25,7 @@ export class Token extends Model<Token, TokenCreationAttrs> {
 	id: number
 
 	@Column({
-		type: DataType.STRING(700),
-		unique: true,
+		type: DataType.TEXT,
 		allowNull: false
 	})
 	token: string

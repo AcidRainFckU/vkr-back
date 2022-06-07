@@ -1,5 +1,6 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards } from '@nestjs/common'
 import { Role } from 'src/auth/roles-auth.decorator'
+import { RoleGuard } from 'src/auth/roles.guard'
 import { ChapterService } from './chapter.service'
 import { ChapterDto } from './dto/chapter.dto'
 import { CreateChapterDto } from './dto/create-chapter.dto'
@@ -9,6 +10,7 @@ export class ChapterController {
 	constructor(private readonly chapterService: ChapterService) {}
 
 	@Role('superuser')
+	@UseGuards(RoleGuard)
 	@Post('/create')
 	create(@Body() dto: CreateChapterDto) {
 		try {
@@ -19,6 +21,7 @@ export class ChapterController {
 	}
 
 	@Role('superuser')
+	@UseGuards(RoleGuard)
 	@Post('/delete')
 	delet(@Body() dto: ChapterDto) {
 		try {

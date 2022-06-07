@@ -28,4 +28,12 @@ export class HomeworkService {
 		)
 		return compliteHomework
 	}
+	async getHomework() {
+		const homework = this.homeworkRepository.findAll({
+			include: {
+				all: true
+			}
+		})
+		return homework
+	}
 }

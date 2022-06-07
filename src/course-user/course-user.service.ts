@@ -10,7 +10,6 @@ export class CourseUserService {
 	) {}
 
 	async changeProgress(dto: CreateCourseUserDto) {
-		console.log(dto)
 		const progress = await this.userCourseRepository.findByPk(dto.progressId)
 
 		const newProgress = await this.userCourseRepository.update(

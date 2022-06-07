@@ -23,12 +23,29 @@ export class CourseService {
 	}
 
 	async addUser(dto: AddUserDto) {
-		const course = await this.courseRepository.findByPk(dto.courseId)
+		const course = await this.courseRepository.findByPk(dto.courseId, {
+			include: { all: true }
+		})
 		const user = await this.userService.getUserByID(dto.userId)
 
 		if (course && user) {
 			await course.$add('users', user.id)
-			return dto
+			const newCourse = await this.courseRepository.findByPk(dto.courseId, {
+				include: { all: true }
+			})
+			return newCourse
+		}
+	}
+	async removeUser(dto: AddUserDto) {
+		const course = await this.courseRepository.findByPk(dto.courseId, {})
+		const user = await this.userService.getUserByID(dto.userId)
+
+		if (course && user) {
+			await course.$remove('users', user.id)
+			const newCourse = await this.courseRepository.findByPk(dto.courseId, {
+				include: { all: true }
+			})
+			return newCourse
 		}
 	}
 

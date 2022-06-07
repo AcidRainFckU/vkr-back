@@ -4,11 +4,12 @@ import { LanguageController } from './language.controller'
 import { SequelizeModule } from '@nestjs/sequelize'
 import { Language } from './language.model'
 import { Course } from 'src/course/course.model'
+import { AuthModule } from 'src/auth/auth.module'
 
 @Module({
 	controllers: [LanguageController],
 	providers: [LanguageService],
-	imports: [SequelizeModule.forFeature([Language, Course])],
+	imports: [AuthModule, SequelizeModule.forFeature([Language, Course])],
 	exports: [LanguageService]
 })
 export class LanguageModule {}

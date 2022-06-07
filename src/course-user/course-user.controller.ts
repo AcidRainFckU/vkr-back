@@ -1,5 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { Role } from 'src/auth/roles-auth.decorator'
+import { RoleGuard } from 'src/auth/roles.guard'
 import { CourseUserService } from './course-user.service'
 import { CreateCourseUserDto } from './dto/course-user.dto'
 
@@ -7,7 +9,8 @@ import { CreateCourseUserDto } from './dto/course-user.dto'
 export class CourseUserController {
 	constructor(private courseUserService: CourseUserService) {}
 
-	@Role('superuser', 'mentor')
+	@Role('superuser', 'mentor', 'student')
+	@UseGuards(RoleGuard)
 	@Post()
 	changeProgress(@Body() dto: CreateCourseUserDto) {
 		try {

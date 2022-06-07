@@ -29,7 +29,9 @@ export class AuthService {
 			id: user.id,
 			userName: user.userName,
 			role: user.role,
-			banned: user.banned
+			banned: user.banned,
+			homeworks: user.homeworks,
+			course: user.course
 		}
 		const accessToken = this.jwtService.sign(payload)
 		const createTokenDto = { token: accessToken, userId: user.id }
@@ -81,7 +83,9 @@ export class AuthService {
 					id: user.id,
 					userName: user.userName,
 					role: user.role,
-					banned: user.banned
+					banned: user.banned,
+					homeworks: user.homeworks,
+					course: user.course
 				}
 			}
 		} catch (e) {

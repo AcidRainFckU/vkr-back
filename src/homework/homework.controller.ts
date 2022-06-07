@@ -1,5 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 import { Role } from 'src/auth/roles-auth.decorator'
+import { RoleGuard } from 'src/auth/roles.guard'
 import { CreateHomeworkDto } from './dto/create-homework.dto'
 import { HomeworkDto } from './dto/homework.dto'
 import { HomeworkService } from './homework.service'
@@ -14,8 +16,16 @@ export class HomeworkController {
 	}
 
 	@Role('superuser', 'mentor')
+	@UseGuards(RoleGuard)
 	@Post('/check')
 	checkHomework(@Body() dto: HomeworkDto) {
 		return this.homeworkService.checkHomework(dto)
+	}
+
+	@Role('superuser', 'mentor')
+	@UseGuards(RoleGuard)
+	@Get()
+	getAll() {
+		return this.homeworkService.getHomework()
 	}
 }
